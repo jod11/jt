@@ -1,18 +1,24 @@
 package com.jt.controller;
 
+import com.jt.vo.EasyUI_Table;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jt.service.ItemService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/item")
 public class ItemController {
 	
 	@Autowired
 	private ItemService itemService;
 	
-	
+
+	@RequestMapping("/query")
+	public EasyUI_Table findItemByPage(Integer page,Integer rows){
+		return itemService.findItemByPage(page,rows);
+	}
 	
 	
 }
